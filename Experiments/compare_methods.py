@@ -2,12 +2,12 @@ import numpy as np
 import os
 import multiprocessing
 from multiprocessing import Pool
-from ..src.nmf_algos.utils.utils import (
+from nmf_algos.utils.utils import (
     load_data_basedon_proto,
     fetch_factors_from_result_path,
 )
-from ..src.NMF_ALS import NMF_ALS
-from ..src.NMF_ENMF import NMF_ENMF
+from nmf_algos import NMF_ALS
+from nmf_algos import NMF_ENMF
 
 method_name_list = ["ALS", "AOADMM"]  # "HALS, "ENMF"
 project_dir = os.path.join(os.getcwd(), "ENMF")

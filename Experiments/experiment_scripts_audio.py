@@ -4,8 +4,6 @@ import os
 from nmf_algos.utils.utils import  load_audio_data, audio_preprocess
 from nmf_algos import NMF_ENMF, NMF_HALS, NMF_AOADMM, NMF_MUL, NMF_GRADMUL, NMF_ALS
 
-#TODO: ENMF multiple runs. Check verbose option, only print save dir here.
-# Run to target error, if not reached with three hour, stop anyway.  
 method_name_list = ["HALS", "MUL","AOADMM", "GRADMUL", "ALS", "ADMM"]
 latent_dim_list = [20, 40, 80, 100]
 rerun_times = 5
@@ -15,10 +13,7 @@ project_dir = os.path.join(os.getcwd())
 f_path = os.path.join(project_dir, "Dataset/audiomnist.npy.npz")
 data_mat, data_labels = load_audio_data(f_path)
 
-print(data_mat.shape)
-print(data_labels.shape)
 target_run_time = 600 
-
 dataset_name = "Audiomnist"
 print("Loaded data with shape: ", data_mat.shape)
 for latent_dim in latent_dim_list:

@@ -110,6 +110,9 @@ class NMF_AOADMM(NMFBase):
             updated_V[:, 0] = np.sqrt(s[0]) * np.abs(v[:, 0])
             self.U = updated_U
             self.V = updated_V
+        else:
+            self.U = params["U"]
+            self.V = params["V"]
 
     def run_within_fixed_time(self, target_run_time, save_time_error=False):
         def f_continue_cond(n_iter, obj, cur_time):

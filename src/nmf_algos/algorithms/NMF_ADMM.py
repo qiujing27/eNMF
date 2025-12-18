@@ -49,6 +49,13 @@ class NMF_ADMM(NMFBase):
             self.Binit = np.random.rand(n, self.r)
             self.Yinit = np.random.rand(m, self.r)
             self.Dinit = np.random.rand(n, self.r)
+        else:
+            self.U = params["U"]
+            self.V = params["V"]
+            self.Ainit = np.random.rand(m, self.r)
+            self.Binit = np.random.rand(n, self.r)
+            self.Yinit = np.random.rand(m, self.r)
+            self.Dinit = np.random.rand(n, self.r)
 
     def run_within_fixed_time(self, target_run_time, save_time_error=False):
         def f_continue_cond(n_iter, obj, cur_time):

@@ -40,6 +40,9 @@ class NMF_HALS(NMFBase):
             self.U = Uinit
             self.V = Vinit
             print("initilized factors")
+        else:
+            self.U = params["U"]
+            self.V = params["V"]
 
     def run_within_fixed_time(self, target_run_time, save_time_error=False):
 

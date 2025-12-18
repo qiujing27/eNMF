@@ -60,6 +60,9 @@ class NMF_GRADMUL(NMFBase):
             Vinit = abs(np.random.rand(n, self.r))
             self.U = Uinit
             self.V = Vinit
+        else:
+            self.U = params["U"]
+            self.V = params["V"]
 
     def run_within_fixed_time(self, target_run_time, save_time_error=False):
         self.set_params({"target_run_time": target_run_time})

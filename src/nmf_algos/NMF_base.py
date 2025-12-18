@@ -63,29 +63,33 @@ class NMFBase(ABC):
         # [default, fixed_tim, target_error,]
         if "run_mode" in params:
             self.run_mode = params["run_mode"]
-        if "save_dir" in params:
-            self.save_dir = params["save_dir"]
-        if "iter_save_dir" in params:
-            self.iter_save_dir = params["iter_save_dir"]
         if "dataset_name" in params:
             self.dataset_name = params["dataset_name"]
+        
+        if "save_dir" in params:
+            self.save_dir = params["save_dir"]
+        else:
+            result_dir = os.path.join(os.getcwd(), "Results")
+            self.save_dir = os.path.join(
+                result_dir,
+                self.dataset_name,
+                self.method_name,
+                f"latent_dim_{self.r}",
+                f"{self.cur_run_id}",
+            )
+
+        if "iter_save_dir" in params:
+            self.iter_save_dir = params["iter_save_dir"]
+        else:
+            self.iter_save_dir = os.path.join(self.save_dir, "Iters")
         if "rerun_times" in params:
             self.rerun_times = params["rerun_times"]
+        
         self.params = params
         self.set_params(params)
 
-        result_dir = os.path.join(os.getcwd(), "Results")
-        self.save_dir = os.path.join(
-            result_dir,
-            self.dataset_name,
-            self.method_name,
-            f"latent_dim_{self.r}",
-            f"{self.cur_run_id}",
-        )
-
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
-        self.iter_save_dir = os.path.join(self.save_dir, "Iters")
         if os.path.exists(self.iter_save_dir):
             shutil.rmtree(self.iter_save_dir)
         os.makedirs(self.iter_save_dir)

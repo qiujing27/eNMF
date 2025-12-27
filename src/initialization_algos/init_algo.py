@@ -1,4 +1,7 @@
+#NMF clustering initialization algorithms
+
 import numpy as np
+from initialization_algos.pba_algo_utils import nmf_init_pba
 
 def nmf_init_random(V, r, seed=0, scale=0.01, dist="uniform"):
     rng = np.random.default_rng(seed)
@@ -324,9 +327,19 @@ def get_init_factors(
             eps=kwargs.get("eps", 1e-12),
         )
 
+    elif init_method in ("pso", "de", "fss"):
+        return nmf_init_pba(
+            V,
+            r,
+            algo=init_method,
+            pop = kwargs.get("pop", 40),
+            eval_budget=kwargs.get("eval_budget",2500),
+            seed=seed
+        )
+
     else:
         raise ValueError(
             f"Unknown init_method='{init_method}'. "
-            "Choose from: random, nndsvd, nndsvda, nndsvdar, kmeans, nica."
+            "Choose from: random, nndsvd, nndsvda, nndsvdar, kmeans, nica, pso, de, fss."
         )
     

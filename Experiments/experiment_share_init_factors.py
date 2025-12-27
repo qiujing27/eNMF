@@ -17,13 +17,14 @@ org_data_mat = load_data_matrix(f_path)
 print("Loaded data with shape: ", org_data_mat.shape)
 init_factor_save_dir = os.path.join(project_dir, "Results/Verb/Init")
 
-os.makedirs(init_factor_save_dir, exist_ok=True)
-#init_method = "nndsvdar" 
-init_method_list = ["random", "nndsvdar", "kmeans","nica"]
+os.makedirs(init_factor_save_dir, exist_ok=True) 
+init_method_list = ["pso", "de", "fss", "random"]
+#init_method_list = ["random", "nndsvdar", "kmeans","nica"]
 for init_method in init_method_list:
     for latent_dim in latent_dim_list:
         U, V = get_init_factors(org_data_mat, latent_dim, init_method=init_method)
         print("U.shape",U.shape, "V.shape", V.shape)
+        print(f"Finished initialization with {init_method}")
         
         data_dict = {"U": U, "V": V,  "init_method": init_method, "r": latent_dim}
         with open(os.path.join(init_factor_save_dir, f"r_{latent_dim}_{init_method}.pkl"), "wb") as f:

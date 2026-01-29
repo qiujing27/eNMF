@@ -7,8 +7,7 @@ This folder contains all datasets (real and synthetic) used to reproduce the res
 ---
 ## 1. Reproducing the results in the paper
 
-1) **Download the datasets** and place them into this repository under the `Dataset/` folder (preserve the `synthetic/` subfolder structure where noted).  
-   **Link:** <https://drive.google.com/drive/folders/1au--QYIT8Qj9whQ2-IopK-QAyumaVoHY?usp=sharing>
+1) **Get the datasets upon request** and place them into this repository under the `Dataset/` folder (preserve the `synthetic/` subfolder structure where noted).  
 
 2) **Place each file at the specified location**
 

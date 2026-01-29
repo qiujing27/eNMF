@@ -173,6 +173,3 @@ def test():
 
 if __name__ == "__main__":
     test()
-#1.15 Check bug in This algorithm. Test running time of calculate_obj_NMF and get_l2_error. 
-# Note: There are two versions of MUL: MUL, accMUL. Two versions of implementation: 1. Ehsan. 2 NMF package
-#1.17 (TODO) check V factor shape, to be consistent wtih ALS. 
